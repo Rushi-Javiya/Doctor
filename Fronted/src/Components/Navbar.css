@@ -1,0 +1,43 @@
+/* Navbar.css */
+.navbar_navbar {
+  background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent white */
+  color:black; /* Dark text color for contrast */
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center; /* Vertically center items */
+  /* background-color: #007bff; Change color as needed */
+  padding: 1rem;
+  /* color: white; */
+}
+
+.navbar_logo {
+  font-size: 1.5rem;
+}
+
+.navbar_buttons {
+  margin-top: 1px;
+  display: flex;
+  align-items: center; /* Vertically center items */
+}
+
+.navbar_buttons .navbar_link {
+  color: black; /* Dark text color for contrast */
+
+  text-decoration: none;
+  margin-left: 1rem;
+  font-size: large;
+  padding: 0.5rem 1rem; /* Adjust padding as needed */
+  border: 1px solid white; /* Add border */
+  border-radius: 5px; /* Add border-radius for rounded corners */
+}
+
+.navbar_buttons .navbar_link:hover {
+  text-decoration: underline;
+  color: #0056b3;
+}
+
+/* Style for last button to remove margin */
+.navbar_buttons .navbar_link:last-child {
+  margin-right: 0;
+}

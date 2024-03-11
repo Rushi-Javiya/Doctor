@@ -1,0 +1,40 @@
+/* NewPatientForm.css */
+.container {
+  margin-top: 20px;
+}
+
+.patient_heading {
+  color: #007bff;
+  margin-top: 2rem;
+}
+
+.patient_table {
+  width: 100%;
+  margin-bottom: 1rem;
+  color: #212529;
+}
+
+.patient_table th,
+.patient_table td {
+  padding: 0.75rem;
+  vertical-align: top;
+  border-top: 1px solid #dee2e6;
+}
+
+.patient_table th {
+  text-align: center;
+}
+
+.patient_label {
+  font-weight: bold;
+}
+
+.patient_buttons {
+  margin-top: 2rem;
+  text-align: center;
+}
+
+.patient_buttons button {
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+}

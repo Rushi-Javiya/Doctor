@@ -1,0 +1,32 @@
+.admin-container {
+  background: linear-gradient(135deg, #2980b9, #6dd5fa);
+    display: flex;
+    
+  flex-direction: column;
+ 
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* Set container height to full viewport height */
+  }
+  
+  .admin-links {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
+  
+  .admin-link {
+    margin: 10px; /* Adjust margin between links as needed */
+    padding: 20px 30px;
+    background-color: white; /* Example link box color */
+    color: black;
+    text-decoration: none;
+    border-radius: 10px;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+  }
+  
+  .admin-link:hover {
+    background-color: #0056b3; /* Example hover color */
+  }
+  

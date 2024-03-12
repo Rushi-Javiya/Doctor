@@ -155,6 +155,10 @@ function AppointmentList() {
         console.error('Error fetching appointments:', error);
       });
   }, []);
+
+  if (appointments.length === 0) {
+    return <div>No appointments available.</div>;
+  }
   
 
   const handleDelete = id => {
@@ -171,9 +175,7 @@ function AppointmentList() {
       .catch(error => console.error('Error deleting appointment:', error));
   };
 
-  if (appointments.length === 0) {
-    return <div>No appointments available.</div>;
-  }
+  
 
   return (
     <div className="appointment-list-container">

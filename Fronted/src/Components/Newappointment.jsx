@@ -551,7 +551,7 @@ const NewAppointment = () => {
             [name]: value
         }));
     };
-  
+    
     const handleSubmit = (e) => {
         e.preventDefault();
     
@@ -563,8 +563,8 @@ const NewAppointment = () => {
         const formattedAppointment = {
             appointmentDateTime: appointment.appointmentDateTime,
             appointmentStatus: appointment.appointmentStatus,
-            doctor: selectedDoctor ? { id: selectedDoctor.id } : null, // Send the doctor ID only
-            patient: selectedPatient ? { id: selectedPatient.id } : null // Send the patient ID only
+            doctor: selectedDoctor ? { id: selectedDoctor.id } : null, // Send the doctor object with only its ID
+            patient: selectedPatient ? { id: selectedPatient.id } : null // Send the patient object with only its ID
         };
     
         fetch('http://localhost:8080/saveAppointment', {
@@ -574,7 +574,12 @@ const NewAppointment = () => {
             },
             body: JSON.stringify(formattedAppointment)
         })
-        .then(response => response.json())
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Failed to save appointment');
+            }
+            return response.json();
+        })
         .then(data => {
             console.log('Appointment saved:', data);
             // Reset the form after successful submission
@@ -587,6 +592,7 @@ const NewAppointment = () => {
         })
         .catch(error => console.error('Error saving appointment:', error));
     };
+    
     
     return (
         <div className="appointment_container">

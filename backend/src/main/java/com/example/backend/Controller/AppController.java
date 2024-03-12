@@ -11,6 +11,7 @@ import com.example.backend.service.AppointmentService;
 import com.example.backend.service.DoctorService;
 import com.example.backend.service.PatientService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -51,7 +52,7 @@ public class AppController {
 
     @GetMapping("/validate")
     public String validate(@RequestParam("email") String email, @RequestParam("password") String password) {
-        if (email.equals("detrojadipali@gmail.com") && password.equals("123")) {
+        if (email.equals("rushi@gmail.com") && password.equals("12")) {
             return "success"; // Or you can return a JSON response with a success message
         } else {
             return "failure"; // Or you can return a JSON response with a failure message
@@ -176,20 +177,53 @@ public class AppController {
 
 
 
+
+
     private final AppointmentService appointmentService;
 
     @PostMapping("/saveAppointment")
-    public Appointment createAppointment(@RequestBody Appointment appointment) {
-        return appointmentService.createAppointment(appointment);
+    public ResponseEntity<?> createAppointment(@RequestBody Appointment appointment) {
+        try {
+            // Perform input validation
+            if (appointment == null || appointment.getAppointmentDateTime() == null || appointment.getDoctor() == null || appointment.getPatient() == null) {
+                return ResponseEntity.badRequest().body("Invalid appointment data. Please provide appointment date and time, doctor, and patient information.");
+            }
+
+            // Save the appointment
+            Appointment savedAppointment = appointmentService.createAppointment(appointment);
+
+            // Return a success response with the saved appointment data
+            return ResponseEntity.ok(savedAppointment);
+        } catch (Exception e) {
+            e.printStackTrace();
+            // Handle internal server error
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Failed to create appointment. Please try again later.");
+        }
     }
 
-    @GetMapping("appointments")
-    public List<Appointment> getAppointments() {
-        return appointmentRepository.findAll();
+    @GetMapping("/appointments")
+    public ResponseEntity<?> getAppointments() {
+        try {
+            // Retrieve appointments from the repository
+            List<Appointment> appointments = appointmentRepository.findAll();
+            return ResponseEntity.ok(appointments);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Failed to fetch appointments");
+        }
     }
     @DeleteMapping("/delete2/{id}")
-    public void deleteAppointment(@PathVariable String id) {
-        appointmentRepository.deleteById(id);
+    public ResponseEntity<?> deleteAppointment(@PathVariable String id) {
+        try {
+            // Delete the appointment
+            appointmentRepository.deleteById(id);
+            return ResponseEntity.ok().build();
+        } catch (EmptyResultDataAccessException e) {
+            return ResponseEntity.notFound().build();
+        } catch (Exception e) {
+            e.printStackTrace();
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Failed to delete appointment");
+        }
     }
 
     @GetMapping("/showappointments")
@@ -241,20 +275,28 @@ public class AppController {
     }
 
     @PutMapping("/update-appointment/{id}")
-    public ResponseEntity<Void> updateAppointment(@PathVariable String id, @RequestBody Appointment updatedAppointment) {
-        Optional<Appointment> appointmentOptional = appointmentRepository.findById(id);
-
-        if (appointmentOptional.isPresent()) {
-            Appointment appointment = appointmentOptional.get();
-
-            appointment.setAppointmentDateTime(updatedAppointment.getAppointmentDateTime());
-            appointment.setDoctor(updatedAppointment.getDoctor());
-            appointment.setPatient(updatedAppointment.getPatient());
-            appointment.setAppointmentStatus(updatedAppointment.getAppointmentStatus());
-            appointmentRepository.save(appointment);
-            return ResponseEntity.ok().build();
-        } else {
-            return ResponseEntity.notFound().build();
+    public ResponseEntity<?> updateAppointment(@PathVariable String id, @RequestBody Appointment updatedAppointment) {
+        try {
+            // Perform input validation
+            if (updatedAppointment == null) {
+                return ResponseEntity.badRequest().body("Updated appointment data is missing");
+            }
+            Optional<Appointment> appointmentOptional = appointmentRepository.findById(id);
+            if (appointmentOptional.isPresent()) {
+                Appointment appointment = appointmentOptional.get();
+                // Update appointment details
+                appointment.setAppointmentDateTime(updatedAppointment.getAppointmentDateTime());
+                appointment.setDoctor(updatedAppointment.getDoctor());
+                appointment.setPatient(updatedAppointment.getPatient());
+                appointment.setAppointmentStatus(updatedAppointment.getAppointmentStatus());
+                appointmentRepository.save(appointment);
+                return ResponseEntity.ok().build();
+            } else {
+                return ResponseEntity.notFound().build();
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Failed to update appointment");
         }
     }
 }

@@ -6,21 +6,21 @@ import './Admin.css'; // Import the CSS file for Admin component styling
 
 const Admin = () => {
   const titleRef = useRef(null);
-  const title = 'Welcome Admin';
+  // const title = 'Welcome Admin';
 
-  const displayTitle = () => {
-    let i = 0;
-    const intervalId = setInterval(() => {
-      if (i < title.length) {
-        titleRef.current.textContent += title[i];
-        i++;
-      } else {
-        clearInterval(intervalId);
-      }
-    }, 200);
-  };
+  // const displayTitle = () => {
+  //   let i = 0;
+  //   const intervalId = setInterval(() => {
+  //     if (i < title.length) {
+  //       titleRef.current.textContent += title[i];
+  //       i++;
+  //     } else {
+  //       clearInterval(intervalId);
+  //     }
+  //   }, 200);
+  // };
 
-  displayTitle();
+  //displayTitle();
   return (
     <>
       <Navbar1 />

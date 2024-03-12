@@ -148,12 +148,14 @@ function AppointmentList() {
         return response.json();
       })
       .then(data => {
+        console.log('Appointments data:', data); // Log the received data
         setAppointments(data);
       })
       .catch(error => {
         console.error('Error fetching appointments:', error);
       });
   }, []);
+  
 
   const handleDelete = id => {
     fetch(`http://localhost:8080/delete2/${id}`, {

@@ -12,9 +12,9 @@ const Navbar1 = ({ onLogout }) => {
         <Link to="/doctors" className="navbar1_link">Doctor</Link>
         <Link to="/appointments" className="navbar1_link">Appointment</Link>
       </div>
-      <div className="navbar1_right">
+      {/* <div className="navbar1_right">
         <button className="navbar1_logout-button" onClick={onLogout}>Logout</button>
-      </div>
+      </div> */}
     </nav>
   );
 };

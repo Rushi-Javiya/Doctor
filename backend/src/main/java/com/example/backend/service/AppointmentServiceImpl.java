@@ -2,6 +2,8 @@ package com.example.backend.service;
 
 import com.example.backend.model.Appointment;
 import com.example.backend.repository.AppointmentRepository;
+import jakarta.persistence.EntityManager;
+import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -27,4 +29,24 @@ public class AppointmentServiceImpl implements AppointmentService {
         // you might need to adjust this method or ensure repository supports this kind of query
         return appointmentRepository.findByPatientEmailAndPatientName(patientEmail, patientName);
     }
+
+
+//    private final EntityManager entityManager;
+//
+//    @Autowired
+//    public AppointmentServiceImpl(EntityManager entityManager) {
+//        this.entityManager = entityManager;
+//    }
+//
+//    @Transactional
+//    @Override
+//    public Appointment createAppointment(Appointment appointment) {
+//        entityManager.persist(appointment);
+//        return appointment;
+//    }
+//
+//    @Override
+//    public List<Appointment> getAppointmentsByPatientEmailAndName(String patientEmail, String patientName) {
+//        return null;
+//    }
 }

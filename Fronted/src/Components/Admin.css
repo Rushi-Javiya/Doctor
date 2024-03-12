@@ -1,19 +1,14 @@
 .admin-container {
-  background: linear-gradient(135deg, #2980b9, #6dd5fa);
-    display: flex;
-    
+  background: linear-gradient(135deg, #2980b9, #ff5733); /* Updated gradient with different color */
+  display: flex;
   flex-direction: column;
- 
-    justify-content: center;
-    align-items: center;
-    height: 100vh; /* Set container height to full viewport height */
-  }
-  
-  .admin-links {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-  }
+  justify-content: center;
+  align-items: center;
+  height: 100vh; /* Set container height to full viewport height */
+  /* Add an aesthetic background color */
+  background-color: #f9f9f9; /* Example aesthetic background color */
+}
+
   
   .admin-link {
     margin: 10px; /* Adjust margin between links as needed */
@@ -27,6 +22,6 @@
   }
   
   .admin-link:hover {
-    background-color: #0056b3; /* Example hover color */
+    background-color: #b52610; /* Example hover color */
   }
   

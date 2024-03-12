@@ -1,6 +1,7 @@
 /* styles.css */
 .container {
     margin: 20px;
+    background: linear-gradient(135deg, #2980b9, #ff5733);
 }
 
 .form-control {

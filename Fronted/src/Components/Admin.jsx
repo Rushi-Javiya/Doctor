@@ -6,26 +6,13 @@ import './Admin.css'; // Import the CSS file for Admin component styling
 
 const Admin = () => {
   const titleRef = useRef(null);
-  // const title = 'Welcome Admin';
-
-  // const displayTitle = () => {
-  //   let i = 0;
-  //   const intervalId = setInterval(() => {
-  //     if (i < title.length) {
-  //       titleRef.current.textContent += title[i];
-  //       i++;
-  //     } else {
-  //       clearInterval(intervalId);
-  //     }
-  //   }, 200);
-  // };
-
-  //displayTitle();
+  
   return (
     <>
       <Navbar1 />
       <div className="admin-container">
       <h2 ref={titleRef}></h2>
+        <div><h2>Admin Page</h2></div>
         <div className="admin-links">
           <Link to="/newpatient" className="admin-link">Add Patient</Link>
           <Link to="/newdoctor" className="admin-link">Add Doctor</Link>

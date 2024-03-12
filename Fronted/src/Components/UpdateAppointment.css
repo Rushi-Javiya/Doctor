@@ -2,6 +2,7 @@
 
 .container {
     margin-top: 50px;
+    background: linear-gradient(135deg, #2980b9, #ff5733);
 }
 
 h1, h2 {

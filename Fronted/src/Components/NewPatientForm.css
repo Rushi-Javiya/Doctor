@@ -3,6 +3,7 @@
   margin: auto;
   max-width: 600px;
   padding: 20px;
+  background: linear-gradient(135deg, #2980b9, #ff5733);
 }
 
 .patient_heading {

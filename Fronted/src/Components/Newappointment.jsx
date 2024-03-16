@@ -712,7 +712,7 @@ const NewAppointment = () => {
         .then(response => response.json())
         .then(data => {
             console.log('Appointment saved:', data);
-            // Reset the form after successful submissionn
+            // Reset the form after successful submission
             setAppointment({
                 appointmentDateTime: '',
                 doctor: '',

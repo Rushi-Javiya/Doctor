@@ -12,12 +12,12 @@ public class Doctor {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
-    private String email;
+    private String email ;
     private String password;
     private String phoneNumber;
     private String specialization;
 
-    // Getters and setters
+    // Getters and setterss
 
     public Long getId() {
         return id;

@@ -702,7 +702,7 @@ const NewAppointment = () => {
             patient: selectedPatient ? { id: selectedPatient.id } : null // Send the patient ID only
         };
     
-        fetch('http://localhost:8080/saveAppointment', {
+        fetch('http://localhost:8080/saveAppointment',  {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -712,7 +712,7 @@ const NewAppointment = () => {
         .then(response => response.json())
         .then(data => {
             console.log('Appointment saved:', data);
-            // Reset the form after successful submissionn
+            // Reset the form after successful submission
             setAppointment({
                 appointmentDateTime: '',
                 doctor: '',

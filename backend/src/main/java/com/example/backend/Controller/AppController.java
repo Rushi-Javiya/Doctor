@@ -120,7 +120,7 @@ public class AppController {
         System.out.println(doctor.getEmail()+doctor.getPassword());
 
         if (doctorService.authenticateDoctor(doctor.getEmail(), doctor.getPassword())) {
-           //System.out.println(doctor.getEmail()+doctor.getPassword());
+            //System.out.println(doctor.getEmail()+doctor.getPassword());
             return ResponseEntity.ok("Login successful");
         } else {
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Wrong email or name");
@@ -260,6 +260,3 @@ public class AppController {
         }
     }
 }
-
-
-

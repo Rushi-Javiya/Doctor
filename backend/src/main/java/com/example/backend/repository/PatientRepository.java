@@ -9,4 +9,3 @@ public interface PatientRepository extends JpaRepository<Patient, Long> {
     Patient findByEmailAndName(String email, String name);
 
 }
-

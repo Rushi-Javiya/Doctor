@@ -35,4 +35,3 @@ class PatientServiceImpl implements PatientService {
 
     // Implement other methods as needed
 }
-

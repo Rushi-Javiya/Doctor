@@ -7,7 +7,7 @@ import java.time.*;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name = "appointments")
+
 public class Appointment {
 
     @Id
@@ -90,5 +90,3 @@ public class Appointment {
         super();
     }
 }
-
-

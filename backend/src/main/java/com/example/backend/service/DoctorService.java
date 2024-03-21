@@ -15,4 +15,4 @@ public interface DoctorService {
 
     public List<Appointment> getAppointmentsForDoctor(String email) ;
 
-    }
+}

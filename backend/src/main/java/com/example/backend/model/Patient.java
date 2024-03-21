@@ -80,4 +80,3 @@ public class Patient {
     }
 // Getters and setters
 }
-

@@ -9,5 +9,5 @@ public interface PatientService {
 
     public Patient getPatientByEmailAndName(String email, String name);
 
-        // Define other methods for patient management (e.g., updatePatient, getPatientById, getAllPatients, etc.)
+    // Define other methods for patient management (e.g., updatePatient, getPatientById, getAllPatients, etc.)
 }
